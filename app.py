@@ -26,6 +26,14 @@ TIME_TO_EXPIRE_SIGNAL = int(os.getenv("TIME_TO_EXPIRE_SIGNAL"))
 
 WATCHED_CHANNELS = [TELEGRAM_CHANNEL_GOLD_SNIPERS_VIP, TELEGRAM_CHANNEL_GOLD_SNIPERS_FREE, TELEGRAM_CHANNEL_PRUEBA]
 
+required_vars = ["TELEGRAM_API", "TELEGRAM_API_HASH", "TELEGRAM_CHANNEL_GOLD_SNIPERS_VIP","TELEGRAM_CHANNEL_GOLD_SNIPERS_FREE","TELEGRAM_CHANNEL_PRUEBA","TIME_TO_EXPIRE_SIGNAL"]
+for var in required_vars:
+    if not os.getenv(var):
+        raise ValueError(f"❌ Variable de entorno faltante: {var}")
+    else:
+        print("Bien!")
+
+
 # Inicializar cliente de Telethon
 client_telegram = TelegramClient('server_session', api_id, api_hash)
 telethon_event_loop = None

@@ -209,6 +209,7 @@ async def handler(event):
     global signal_id_mrpip
     sender_id = int(event.chat_id)
     message = event.message.message
+    header = ''
 
     print(f"sender: {sender_id}")
     print(f"message: {message}")
@@ -260,13 +261,15 @@ async def handler(event):
             return
     
     else:
-        # if sender_id  == TELEGRAM_CHANNEL_TARGET:
-            # header = "⚠️ Se recibió un mensaje de Easy Forex, pero no es una señal"
-        # elif sender_id  == TELEGRAM_CHANNEL_PRUEBA:
-            # header = "⚠️ Se recibió un mensaje del grupo de prueba, pero no es una señal"
-        # else:
+        if sender_id  == TELEGRAM_CHANNEL_GOLD_SNIPERS_VIP:
+            header = "⚠️ Se recibió un mensaje de GOLD SNIPERS VIP, pero no es una señal"
+        elif sender_id  == TELEGRAM_CHANNEL_GOLD_SNIPERS_FREE:
+            header = "⚠️ Se recibió un mensaje de GOLD SNIPERS FREE, pero no es una señal"
+        elif sender_id  == TELEGRAM_CHANNEL_PRUEBA:
+            header = "⚠️ Se recibió un mensaje del grupo de prueba, pero no es una señal"
+        else:
             # header = "⚠️ Se recibió un mensaje, pero no es de otro canal"
-        print(f"\n📭 Mensaje ignorado de canal {sender_id}.\n{'='*60}")
+            print(f"\n📭 Mensaje ignorado de canal {sender_id}.\n{'='*60}")
     # Enviar mensaje al canal
     try:
         # await client_telegram.send_message(entity=target_channel, message=f"{header}\n\n{message}")

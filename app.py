@@ -130,14 +130,16 @@ def parse_gold_sniper_signal(text):
         return None
 
     try:
-        sl = float(sl_match.group(1))
+        # sl = float(sl_match.group(1))
+        sl = sl_match.group(1)
     except ValueError:
         return None
 
     # 4. TPs
     tp_matches = re.findall(r'\bTP\d*\s*[:=]?\s*([\d\.]+)', text)
     try:
-        tps = [float(tp) for tp in tp_matches]
+        # tps = [float(tp) for tp in tp_matches]
+        tps = [tp.strip() for tp in tp_matches]
     except ValueError:
         return None
 
@@ -257,14 +259,16 @@ def parse_forex_signal(text):
         return None
 
     try:
-        sl = float(sl_match.group(1))
+        # sl = float(sl_match.group(1))
+        sl = sl_match.group(1)
     except ValueError:
         return None
 
     # 4. TPs
     tp_matches = re.findall(r'\bTP\d*\s*[:=]?\s*([\d\.]+)', text)
     try:
-        tps = [float(tp) for tp in tp_matches]
+        # tps = [float(tp) for tp in tp_matches]
+        tps = [tp.strip() for tp in tp_matches]
     except ValueError:
         return None
 
